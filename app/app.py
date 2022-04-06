@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_migrate import Migrate
 from config import Configuration
 from flask_sqlalchemy import SQLAlchemy
 
@@ -9,4 +8,3 @@ app.config.from_object(Configuration)
 
 db = SQLAlchemy(app)
 
-migrate = Migrate(app, db)

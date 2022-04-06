@@ -7,22 +7,22 @@ from .forms import PostForm
 posts = Blueprint('posts', __name__, template_folder="templates")
 
 
-# @posts.route('/create', methods=['POST', 'GET'])
-# def create_post():
-#     if request.method == 'POST':
-#         title = request.form['title']
-#         body = request.form['body']
-#         if title:
-#             try:
-#                 post = Post(title=title, body=body)
-#                 db.session.add(post)
-#                 db.session.commit()
-#             except:
-#                 print('сломався')
-#             return redirect(url_for('posts.index'))
-#
-#     form = PostForm()
-#     return render_template('posts/create_post.html', form=form)
+@posts.route('/create', methods=['POST', 'GET'])
+def create_post():
+    if request.method == 'POST':
+        title = request.form['title']
+        body = request.form['body']
+        if title:
+            try:
+                post = Post(title=title, body=body)
+                db.session.add(post)
+                db.session.commit()
+            except:
+                print('сломався')
+            return redirect(url_for('posts.index'))
+
+    form = PostForm()
+    return render_template('posts/create_post.html', form=form)
 
 
 @posts.route('/')

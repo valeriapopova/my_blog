@@ -17,7 +17,7 @@ post_tags = db.Table('post_tags',
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))
-    slug = db.Column(db.String(140), unique=True)
+    slug = db.Column(db.String(140), unique=True, nullable=False)
     body = db.Column(db.Text)
     created = db.Column(db.DateTime, default=datetime.now())
 
